@@ -1,19 +1,19 @@
-import { useState } from "react";
 import { useAxios } from "../shared/hooks/useAxios"
 import { Character } from "./models"
 import { CharacterList } from "./components/CharacterList";
+import { characterService } from "./services";
+import { useCallback } from "react";
 
 export const CharactersContainer = () => {
-  const [trigger, setTrigger] = useState<boolean>(false);
+  const serviceCall = useCallback(() => characterService.getCharacters(),[])
 
   const { isLoading, data: characters, error } = useAxios<void, Character[]>({
-    url: "http://localhost:4000/characters",
-    method: "GET",
-    trigger
+   serviceCall,
+    trigger: true
   })
 
   const triggerChange = () => {
-    setTrigger((prev) => !prev)
+    //setTrigger((prev) => !prev)
   }
 
   if (isLoading) return <p>Cargando Personajes...</p>
