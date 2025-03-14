@@ -1,10 +1,10 @@
-import { useContext, useEffect, useRef } from "react";
+import { ReactNode, useContext, useEffect, useRef, MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import { ModalContext } from "./context/ModalContext";
 import "./Modal.css";
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const Modal = ({ children }: Props) => {
@@ -15,7 +15,7 @@ export const Modal = ({ children }: Props) => {
     setState(false);
   };
 
-  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleContentClick = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 

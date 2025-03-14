@@ -1,8 +1,9 @@
-import { createContext, ReactNode, useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
 export const ModalContext = createContext<{
   state: boolean;
-  setState: React.Dispatch<React.SetStateAction<boolean>>
+  setState: Dispatch<SetStateAction<boolean>>
 }>({
   state: false,
   setState: () => null
